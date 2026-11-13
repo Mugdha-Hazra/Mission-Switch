@@ -1,0 +1,51 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class Student {
+public:
+    int age;
+    string name;
+
+    void display() {
+        cout << "My name is " << this->name << ". I am " << this->age << " years old" << endl;
+    }
+
+    void sayHello(string name) {
+        cout << this->name << " says hello to " << name << endl;
+    }
+};
+
+int main() {
+    Student s1;
+    s1.age = 10;
+    s1.name = "A";
+    s1.display();
+
+    // In C++, we can use a reference to point to the same object instance
+    Student &s2 = s1; 
+    s2.age = 20;
+    s2.name = "B";
+
+    s2.display();
+
+    s1.display();
+
+    return 0;
+}
+
+
+
+
+
+
+
+Explanation:
+References vs. Pointers: In Java/JavaScript/Python, variables like s1 and s2 hold references to objects on the heap. Assigning s2 = s1 makes both references point to the exact same object instance.
+
+In C++, using a reference type (Student &s2 = s1;) achieves the same behavior where s2 acts as an alias to s1.
+
+Because s1 and s2 refer to the same object, modifying s2.age and s2.name updates the shared object instance. Therefore, the final call to s1.display() will output:
+
+My name is B. I am 20 years old.
